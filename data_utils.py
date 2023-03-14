@@ -16,10 +16,10 @@ if where == -1:
 else:
     # Not on PA.
     config = {
-        "user": "C00263218",
-        "password": "rowcolgrid",
-        "host": "C00263218.mysql.pythonanywhere-services.com",
-        "database": "C00263218$swimdataDB",
+        "user": "127.0.0.1",
+        "password": "swimdataDB",
+        "host": "swimuser",
+        "database": "swimpasswd",
     }
 
 
@@ -29,16 +29,6 @@ def get_world_records(event):
     scmen = records["SCMen"][event]
     scwomen = records["SCWomen"][event]
     return lcmen, lcwomen, scmen, scwomen
-
-
-# def get_swimmers_list():
-#     SQL = "select name from swimmers"
-#     with DBcm.UseDatabase(config) as db:
-#         db.execute(SQL)
-#         results = db.fetchall()  # a list of tuples.
-#     names = [t[0] for t in results]  # a list of names.
-#     return names
-
 
 def get_swimmer_data(name, the_session):
     SQL = """  
@@ -58,7 +48,6 @@ def get_swimmer_data(name, the_session):
             ),
         )
         results = db.fetchall()  # a list of tuples.
-    ## events = [t[0] + "-" + t[1] for t in results]  # a list of swimming events.
     return results
 
 
