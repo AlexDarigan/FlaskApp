@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+    <script src="https://unpkg.com/htmx.org@1.8.5"></script>
+
+    <head>
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="/static/webapp.css">
+     </head>
+
+    <body>
+        <h3>{{ title }}</h3>
+
+    {% with id="sessions", select_id = "session", title="Session", url="/swimmers", target="#swimmers", data=session_data %}
+        {% include "select.html" %}
+    {% endwith %}
+    {% with id="swimmers", select_id = "swimmer", title="Swimmer" %}
+        {% include "select.html" %}
+    {% endwith %}
+    {% with id="showevents", select_id = "event", title="Event" %}
+        {% include "select.html" %}
+    {% endwith %}
+    <br><br>
+    <div id="showchart"></div>
+    <p class="footer">Copyright 2022-2023 (c) by Paul Barry.</p>
+    </body>
+</html>
+

@@ -1,0 +1,10 @@
+<div id="{{ id }}">
+    <label for="{{ select_id }}">{{ title }}:</label>
+    <select name="{{ select_id }}" id="{{ select_id }}" 
+    hx-post="{{ url }}" hx-target="{{ target }}">
+        <option>-</option>
+        {% for name in data %}
+            <option value="{{ name }}">{{ name }}</option>
+        {% endfor %}
+    </select>
+</div>
