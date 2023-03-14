@@ -23,15 +23,6 @@ else:
     }
 
 def populate():
-    with DBcm.UseDatabase("mydata.sqlite3") as db:
-        TableSQL = f"""
-                    create table if not exists {table} (
-                        event varchar(32) not null,
-                        time varchar(16) not null 
-                    )        
-        """
-        db.execute(TableSQL)
-
     for table in records.keys():
         with DBcm.UseDatabase(config) as db:
             TableSQL = f"""
