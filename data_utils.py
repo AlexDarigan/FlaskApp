@@ -22,26 +22,6 @@ else:
         "database": "AlexDarigan$default",
     }
 
-def populate():
-    for table in records.keys():
-        with DBcm.UseDatabase(config) as db:
-            TableSQL = f"""
-                    create table if not exists {table} (
-                        event varchar(32) not null,
-                        time varchar(16) not null 
-                    )        
-            """
-            db.execute(TableSQL)
-            SQL = f"""
-                        insert into {table} 
-                        (event, time)
-                        values 
-                        ( %s, %s )
-            """
-            data = [row for row in records[table].items()]
-            db.executemany(SQL, data)
-
-
 def get_world_records(event):
     lcmen = records["LCMen"][event]
     lcwomen = records["LCWomen"][event]

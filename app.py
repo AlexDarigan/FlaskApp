@@ -10,9 +10,6 @@ app.secret_key = (
 )
 app.config["SESSION_TYPE"] = "filessystem"
 
-if "PYTHONANYWHERE_SITE" in os.environ:
-    data_utils.populate()
-
 @app.get("/")  # The @ symbol is a Python decorator.
 def homepage():
     # Setting session data on page load (refresh page to update)
