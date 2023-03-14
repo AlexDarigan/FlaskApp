@@ -16,11 +16,23 @@ if where == -1:
 else:
     # Not on PA.
     config = {
-        "user": "127.0.0.1",
-        "password": "swimdataDB",
-        "host": "swimuser",
-        "database": "swimpasswd",
+        "user": "AlexDarigan",
+        "password": "FooBar!!",
+        "host": "AlexDarigan.mysql.pythonanywhere-services.com",
+        "database": "AlexDarigan$default",
     }
+
+def populate():
+    for table in records.keys():
+        with DBcm.UseDatabase(config) as db:
+            SQL = f"""
+                        insert into {table} 
+                        (event, time)
+                        values 
+                        ( %s, %s )
+            """
+            data = [row for row in records[table].items()]
+            db.executemany(SQL, data)
 
 
 def get_world_records(event):

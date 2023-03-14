@@ -129,4 +129,6 @@ def show_event_chart():
 
 
 if __name__ == "__main__":
+    if "PYTHONANYWHERE_SITE" in os.environ:
+            data_utils.populate()
     app.run(debug=True)  # Starts the web server, and keeps going...
